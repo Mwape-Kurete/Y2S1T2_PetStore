@@ -1,0 +1,39 @@
+.overlap-group {
+  height: 800px;
+}
+.bg-cont {
+  background-color: #f7f2ec;
+
+  border-bottom: solid 5px black;
+  border-left: solid 5px black;
+  border-right: solid 5px black;
+
+  border-radius: 0px 0px 28px 28px;
+}
+
+.bg-cont-inner {
+  margin: auto;
+  margin-top: 25%;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section {
+  margin-top: -170px;
+}
+
+.text-main-title {
+  font-family: "Cherry Bomb One", system-ui;
+  font-weight: 400;
+  font-size: 96px;
+  font-style: normal;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+}
