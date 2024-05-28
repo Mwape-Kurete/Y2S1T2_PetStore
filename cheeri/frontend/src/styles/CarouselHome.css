@@ -1,5 +1,28 @@
-.caro-copy {
-  margin: auto;
-  align-items: center;
-  justify-content: center;
+.mainCaraCont {
+  height: 550px;
+  width: 65%;
+
+  background-color: #ffebad;
+  border: solid black 2px;
+
+  display: flex;
+  margin: 0 auto;
+
+  margin-top: -25px;
+  margin-bottom: 50px;
+}
+
+.banner {
+  display: flex;
+  margin: 0 auto;
+
+  height: 65px;
+  width: 85%;
+  border: solid black 2px;
+  /* background-color: #7bb8c0; */
+  background-color: #feb737;
+}
+
+.caraImage {
+  height: 750px;
 }

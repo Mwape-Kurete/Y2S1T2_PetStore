@@ -2,11 +2,11 @@
   height: 800px;
 }
 .bg-cont {
-  background-color: #f7f2ec;
+  background-color: #543786;
 
-  border-bottom: solid 5px black;
-  border-left: solid 5px black;
-  border-right: solid 5px black;
+  border-bottom: solid 3px black;
+  border-left: solid 3px black;
+  border-right: solid 3px black;
 
   border-radius: 0px 0px 28px 28px;
 }
@@ -28,6 +28,7 @@
   font-size: 96px;
   font-style: normal;
   text-align: center;
+  color: #ffebad;
 }
 
 .subtitle {
@@ -36,4 +37,5 @@
   font-weight: 500;
   font-style: normal;
   text-align: center;
+  color: #ffebad;
 }

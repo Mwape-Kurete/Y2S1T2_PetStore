@@ -1,3 +1,26 @@
 body {
-  background-color: #fbffb3;
+  background-color: #ffebad;
+}
+
+.cara-copy {
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Cherry Bomb One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: black;
+}
+
+p {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  color: black;
 }

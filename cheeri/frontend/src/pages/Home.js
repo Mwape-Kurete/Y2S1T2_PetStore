@@ -19,7 +19,13 @@ function Home() {
         <HeroHeader />
       </Row>
       <Row className="page-cont">
-        <Col className="categories"></Col>
+        <div className="cara-copy">
+          <h2>CHEERI Pets</h2>
+          <p>CHEERI animals we've aided in the past</p>
+        </div>
+        <Col className="categories">
+          <CarouselHome />
+        </Col>
       </Row>
     </Container>
   );
