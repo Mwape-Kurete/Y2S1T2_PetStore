@@ -63,12 +63,25 @@
   top: 37px;
 }
 
+.navbar-nav .nav-link.active {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #feb737;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+  top: 37px;
+}
+
 .nav-text:hover {
   font-family: "Baloo 2", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #e4572e;
+  color: #7bb8c0;
   letter-spacing: 0;
   line-height: normal;
   margin-left: 20px;

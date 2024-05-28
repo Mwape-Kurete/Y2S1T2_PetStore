@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import logo from "../media/logo 3.svg";
 
 import "../styles/NavComp.css";
@@ -20,18 +20,20 @@ function NavComp() {
               <img src={logo} alt="cheeri logo" className="mainLogo" />
             </Navbar.Brand> */}
 
-            <Nav.Link to="/" className="left-of nav-text">
-              Home
-            </Nav.Link>
-            <Nav.Link href="#features" className="left-of nav-text">
-              Products
-            </Nav.Link>
-            <Nav.Link href="#pricing" className="right-of nav-text">
-              Checkout
-            </Nav.Link>
-            <Nav.Link href="#pricing" className="right-of nav-text">
-              Login <i className="bi bi-person-fill"></i>
-            </Nav.Link>
+            <LinkContainer to="/">
+              <Nav.Link className="left-of nav-text">Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/products">
+              <Nav.Link className="left-of nav-text">Products</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/cart">
+              <Nav.Link className="right-of nav-text">Cart</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <Nav.Link className="right-of nav-text">
+                Login <i className="bi bi-person-fill"></i>
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Container>
       </Navbar>
