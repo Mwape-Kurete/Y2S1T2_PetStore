@@ -13,7 +13,6 @@ function TabProductWishlist() {
       className="mb-3 tabs-wishprod-whole"
     >
       <Tab eventKey="products" title="Products">
-        <h2>CHEERI Products</h2>
         <Row className="products-container-main">
           <ProductCards />
         </Row>

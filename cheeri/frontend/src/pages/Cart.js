@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import "../styles/Cart.css";
 
 import NavComp from "../components/NavComp";
+import CartItem from "../components/CartItem";
 
 function Cart() {
   return (
@@ -16,7 +17,11 @@ function Cart() {
         <NavComp />
       </Row>
       <Row className="page-cont">
-        <Col className="Cart-checkout"></Col>
+        <h2>Your Cart</h2>
+        <Col className="Cart-checkout">
+          <CartItem />
+          <CartItem />
+        </Col>
       </Row>
     </Container>
   );
