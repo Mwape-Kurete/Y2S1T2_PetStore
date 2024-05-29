@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/esm/Button";
 
 import "../styles/SignUpForm.css";
 
@@ -13,8 +14,8 @@ function SignUpForm() {
     <Container className="main-form-cont" fluid>
       <Row className="sign-up-form">
         <Col>
-          <h2 className="signUp">Sign Up</h2>
-          <Form>
+          <h2 className="sign-up-title">Sign Up</h2>
+          <Form className="main-form-sign">
             <Form.Group className="mb-3 form-input" controlId="formGroupEmail">
               <Form.Label>Full Name</Form.Label>
               <Form.Control type="email" placeholder="Enter email" />
@@ -37,6 +38,13 @@ function SignUpForm() {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" placeholder="Confirm Password" />
             </Form.Group>
+
+            <Button
+              className="sign-up-button d-flex justify-content-center"
+              type="submit"
+            >
+              Sign Up
+            </Button>
           </Form>
         </Col>
       </Row>

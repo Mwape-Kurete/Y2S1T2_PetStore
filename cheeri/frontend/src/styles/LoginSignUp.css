@@ -1,0 +1,20 @@
+.toggle-forms {
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 150px;
+}
+
+.whole-toggle {
+  width: 250px;
+}
+
+.btn .login-toggle-btn {
+  background-color: #543786 !important;
+  border-color: #543786 !important;
+}
+
+.loginSignUp-image {
+  height: 550px;
+  border-radius: 50px;
+  margin-top: 50px;
+}

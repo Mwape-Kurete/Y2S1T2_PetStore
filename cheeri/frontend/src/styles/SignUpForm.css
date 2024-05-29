@@ -1,0 +1,51 @@
+.main-form-sign {
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: white;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  padding: 50px;
+  height: 65vh;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sign-up-title {
+  margin-top: 15px;
+}
+
+.sign-up-button {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 170px;
+  background-color: #feb737;
+  border-color: #feb737;
+  color: black;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.sign-up-button:hover {
+  margin: 0 auto;
+  width: 170px;
+  background-color: #172121;
+  border-color: #172121;
+  color: white;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.form-input-style {
+  padding: 5px;
+}

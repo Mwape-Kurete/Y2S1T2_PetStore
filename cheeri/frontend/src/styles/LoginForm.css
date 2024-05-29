@@ -1,0 +1,51 @@
+.main-form {
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: white;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  padding: 50px;
+  height: 50vh;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login-title {
+  margin-top: 15px;
+}
+
+.login-button {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 120px;
+  background-color: #feb737;
+  border-color: #feb737;
+  color: black;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.login-button:hover {
+  margin: 0 auto;
+  width: 120px;
+  background-color: #172121;
+  border-color: #172121;
+  color: white;
+
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.form-input-style {
+  padding: 5px;
+}
