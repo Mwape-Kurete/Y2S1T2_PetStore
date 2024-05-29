@@ -9,6 +9,8 @@ import "../styles/Products.css";
 
 import NavComp from "../components/NavComp";
 import HeroHeader from "../components/HeroHeader";
+import FilterSortBar from "../components/FilterSortBar";
+import TabProductWishlist from "../components/TabProductWishlist";
 
 function Products() {
   return (
@@ -21,7 +23,12 @@ function Products() {
         <div className="cara-copy">
           <h2>CHEERI Products</h2>
         </div>
-        <Col className="prods"></Col>
+        <Col className="filter">
+          <FilterSortBar />
+        </Col>
+        <Col className="prods col-12">
+          <TabProductWishlist />
+        </Col>
       </Row>
     </Container>
   );
