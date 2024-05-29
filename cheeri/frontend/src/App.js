@@ -9,12 +9,12 @@ import NavComp from "./components/NavComp";
 function App() {
   return (
     <Router>
-      <NavComp />
+      {/* <NavComp /> */}
       <Routes>
         <Route index element={<Home />} />
-        <Route path="product" element={<Products />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="login" element={<LoginSignUp />} />
+        <Route path="Products" element={<Products />} />
+        <Route path="Cart" element={<Cart />} />
+        <Route path="LoginSignUp" element={<LoginSignUp />} />
       </Routes>
     </Router>
   );

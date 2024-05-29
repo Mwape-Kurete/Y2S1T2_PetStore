@@ -101,3 +101,33 @@
   margin-right: 20px;
   top: 37px;
 }
+
+a.hyperlink {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+  top: 37px;
+
+  text-decoration: none;
+}
+
+a.hyperlink:hover {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #e4572e;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 20px;
+  margin-right: 20px;
+  top: 37px;
+
+  text-decoration: none;
+}
