@@ -8,18 +8,18 @@ import Col from "react-bootstrap/Col";
 import "../styles/SingleProduct.css";
 
 import NavComp from "../components/NavComp";
+import SingleProductCard from "../components/SingleProductCard";
 
 function SingleProduct() {
   return (
-    <Container className="main-home-cont" fluid>
+    <Container className="main-cont" fluid>
       <Row className="hero-cont">
         <NavComp />
       </Row>
       <Row className="page-cont">
-        <div className="cara-copy">
-          <h2>CHEERI Products</h2>
-        </div>
-        <Col className="product-container"></Col>
+        <Col className="product-container">
+          <SingleProductCard />
+        </Col>
       </Row>
     </Container>
   );

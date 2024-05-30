@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import LoginSignUp from "./pages/LoginSignUp";
+import SingleProduct from "./pages/SingleProduct";
 import NavComp from "./components/NavComp";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="Products" element={<Products />} />
         <Route path="Cart" element={<Cart />} />
         <Route path="LoginSignUp" element={<LoginSignUp />} />
+        <Route path="SingleProduct" element={<SingleProduct />} />
       </Routes>
     </Router>
   );
