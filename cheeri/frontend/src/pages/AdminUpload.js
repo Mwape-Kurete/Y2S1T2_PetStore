@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import "../styles/Cart.css";
 
 import NavComp from "../components/NavComp";
+import PortalForm from "../components/PortalForm";
 
 function AdminUpload() {
   return (
@@ -18,7 +19,7 @@ function AdminUpload() {
       <Row className="page-cont">
         <h2>Admin Portal</h2>
         <Col className="PortalCont">
-
+            <PortalForm />
         </Col>
       </Row>
     </Container>
