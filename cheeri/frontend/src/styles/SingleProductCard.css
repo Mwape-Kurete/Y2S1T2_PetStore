@@ -1,3 +1,16 @@
 .SingleProdImagePage {
-  height: 500px;
+  max-height: 400px;
+}
+
+.countMarker {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.quantity {
+  display: inline-flex;
+  align-items: center;
 }

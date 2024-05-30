@@ -10,6 +10,7 @@ import "../styles/Home.css";
 import NavComp from "../components/NavComp";
 import HeroHeader from "../components/HeroHeader";
 import CarouselHome from "../components/CarouselHome";
+import SingleProductCard from "../components/SingleProductCard";
 
 function Home() {
   return (
