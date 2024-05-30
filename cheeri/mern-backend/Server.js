@@ -30,7 +30,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // User routes
-const userRoutes = require('./routes/UserRoutes'); 
+const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes); 
 
 // Launch server

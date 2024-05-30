@@ -22,11 +22,12 @@ router.post('/register', async (req, res) => {
             password,
         }); 
 
-        //Hash the password before saving it in DB
-        const salt = await bcrypt.getSalt(10);
-        user.password = await bcrypt.hash(password, salt);
+        // //Hash the password before saving it in DB
+        // const salt = await bcrypt.getSalt(10);
+        // user.password = await bcrypt.hash(password, salt);
 
         await user.save(); 
+
 
     }catch (err){
         res.status(400).json({ error: err.message });
