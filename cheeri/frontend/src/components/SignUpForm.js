@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { useRef, useState } from "react";
-import { useHistory } from "react-router-dom"; 
+// import {useHistory} from "react-router-dom"; 
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,7 +12,6 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-
 import axios from 'axios'; 
 
 import "../styles/SignUpForm.css";
@@ -20,12 +19,12 @@ import AccountModal from "./AccountModal";
 
 function SignUpForm() {
   const [validated, setValidated] = useState(false);
-  const [showModal, setShowModal ] = useState(false); 
+  //const [showModal, setShowModal ] = useState(false); 
 
-  const [modalMessage, setModalMessage ] = useState(""); 
+  //const [modalMessage, setModalMessage ] = useState(""); 
   const confirmationError = useRef(null);
   const progressBar = useRef(null);
-  const history = useHistory(); 
+  //const history = useHistory(); 
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,6 +44,8 @@ function SignUpForm() {
 
       // Prepare form data
       const formData = { name, email, password };
+      
+      console.log("Submitting form data:", formData);
 
       try {
         const response = await axios.post('http://localhost:5000/api/users/register', formData, {
@@ -52,13 +53,13 @@ function SignUpForm() {
             'Content-Type': 'application/json'
           }
         });
-        console.log(response.data);
+        console.log("Response from server:", response.data);
 
-        setModalMessage("Account created successfully!");
-        setShowModal(true);
+        //setModalMessage("Account created successfully!");
+        //setShowModal(true);
 
       } catch (error) {
-        console.error('Error adding user', error);
+        console.error('Error adding user', error.response ? error.response.data : error.message);
       }
     }
 
@@ -90,11 +91,6 @@ function SignUpForm() {
       Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character.
     </Tooltip>
   );
-
-  const handleCloseModal = () => {
-    setShowModal(false); 
-    history.push('/'); //redirct user
-  }
 
   return (
     <Container className="main-form-cont" fluid>
