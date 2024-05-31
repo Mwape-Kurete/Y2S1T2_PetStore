@@ -7,7 +7,7 @@
   margin-top: 25px;
   margin-bottom: 50px;
   padding: 50px;
-  height: 65vh;
+  height: 85vh;
 
   font-family: "Baloo 2", sans-serif;
   font-optical-sizing: auto;
@@ -48,4 +48,8 @@
 
 .form-input-style {
   padding: 5px;
+}
+
+.was-validated .form-control {
+  transition: none;
 }
