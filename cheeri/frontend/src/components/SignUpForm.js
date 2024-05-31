@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import axios from 'axios'; 
 
 import "../styles/SignUpForm.css";
 
@@ -23,7 +24,7 @@ function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formData, setFormData] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false || password !== confirmPassword) {
@@ -35,6 +36,16 @@ function SignUpForm() {
       confirmationError.current.style.display = "none";
       setFormData([...formData, { fullname, email, password }]);
       // Perform additional actions such as sending data to the backend
+
+      try{
+        const response = await axios.post('http://localhost:5000/api/register', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+      } catch (error) {
+        console.error('error adding user', error);
+      }
     }
 
     setValidated(true);
