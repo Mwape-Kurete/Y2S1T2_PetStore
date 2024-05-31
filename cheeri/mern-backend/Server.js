@@ -1,6 +1,8 @@
 const dotenv = require("dotenv");
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.set('strictQuery', false); //additional setting 
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -21,19 +23,42 @@ app.get("/", (req, res) => {
 });
 
 // MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log('MongoDB connection error:', err));
+// mongoose
+//   .connect(process.env.MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("MongoDB connected"))
+//   .catch((err) => console.log('MongoDB connection error:', err));
 
 // User routes
 const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 
-// Launch server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+
+const start = async() => {
+  
+try{
+  await mongoose.connect('mongodb+srv://231115:xcBZi7Ry3ah1s1Nh@cheeri-database.iwslgva.mongodb.net/?retryWrites=true&w=majority&appName=cheeri-database'); 
+
+  // Launch server
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+  
+}catch(e){
+  console.log(e.message);
+}
+  
+
+}
+
+start(); 
+
+
+//the following goes in the connect 
+// , {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }
