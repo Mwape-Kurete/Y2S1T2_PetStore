@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { useRef, useState } from "react";
+import { useHistory } from "react-router-dom"; 
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,20 +11,26 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+
+
 import axios from 'axios'; 
 
 import "../styles/SignUpForm.css";
+import AccountModal from "./AccountModal";
 
 function SignUpForm() {
   const [validated, setValidated] = useState(false);
+  const [showModal, setShowModal ] = useState(false); 
+
+  const [modalMessage, setModalMessage ] = useState(""); 
   const confirmationError = useRef(null);
   const progressBar = useRef(null);
+  const history = useHistory(); 
 
-  const [fullname, setFullname] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [formData, setFormData] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,17 +42,23 @@ function SignUpForm() {
       }
     } else {
       confirmationError.current.style.display = "none";
-      setFormData([...formData, { fullname, email, password }]);
-      // Perform additional actions such as sending data to the backend
 
-      try{
-        const response = await axios.post('http://localhost:5000/api/register', formData, {
+      // Prepare form data
+      const formData = { name, email, password };
+
+      try {
+        const response = await axios.post('http://localhost:5000/api/users/register', formData, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'application/json'
           }
-        })
+        });
+        console.log(response.data);
+
+        setModalMessage("Account created successfully!");
+        setShowModal(true);
+
       } catch (error) {
-        console.error('error adding user', error);
+        console.error('Error adding user', error);
       }
     }
 
@@ -53,7 +67,7 @@ function SignUpForm() {
 
   const handlePasswordChange = (password) => {
     setPassword(password);
-    const letterMatch = (password.match(/[a-z, A-Z]/g) || []).length;
+    const letterMatch = (password.match(/[a-zA-Z]/g) || []).length;
     const numberMatch = (password.match(/[0-9]/g) || []).length;
     const specialMatch = (password.match(/[#?!@$%^&*-]/g) || []).length;
 
@@ -77,6 +91,11 @@ function SignUpForm() {
     </Tooltip>
   );
 
+  const handleCloseModal = () => {
+    setShowModal(false); 
+    history.push('/'); //redirct user
+  }
+
   return (
     <Container className="main-form-cont" fluid>
       <Row className="sign-up-form">
@@ -93,8 +112,8 @@ function SignUpForm() {
               <Form.Control
                 type="text"
                 placeholder="Enter Full Name"
-                value={fullname}
-                onChange={(e) => setFullname(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -109,7 +128,7 @@ function SignUpForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               />
               <Form.Control.Feedback type="invalid">
                 Please provide a valid email address.
@@ -143,7 +162,7 @@ function SignUpForm() {
                 height: "24px",
                 marginTop: "5px",
                 backgroundColor: "hsl(0, 0%, 74%)",
-                borderRadius: "5px",
+                borderRadius: "25px",
               }}
             >
               <div
@@ -167,7 +186,7 @@ function SignUpForm() {
                 required
               />
               <Form.Control.Feedback type="invalid">
-                Please confirm your password.
+                Passwords do not match
               </Form.Control.Feedback>
             </Form.Group>
             <p
