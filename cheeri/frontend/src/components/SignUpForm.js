@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { useRef, useState } from "react";
-// import {useHistory} from "react-router-dom"; 
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,20 +10,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import AccountModal from "./AccountModal";
 
 import axios from 'axios'; 
 
 import "../styles/SignUpForm.css";
-import AccountModal from "./AccountModal";
 
 function SignUpForm() {
   const [validated, setValidated] = useState(false);
-  //const [showModal, setShowModal ] = useState(false); 
 
-  //const [modalMessage, setModalMessage ] = useState(""); 
   const confirmationError = useRef(null);
   const progressBar = useRef(null);
-  //const history = useHistory(); 
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalVisible, setModalVisible] = useState(false); 
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -53,10 +51,11 @@ function SignUpForm() {
             'Content-Type': 'application/json'
           }
         });
-        console.log("Response from server:", response.data);
 
-        //setModalMessage("Account created successfully!");
-        //setShowModal(true);
+        setModalMessage("Welcome to Cheeri, let's get browsing");
+        setModalVisible(true);
+
+        console.log("Response from server:", response.data);
 
       } catch (error) {
         console.error('Error adding user', error.response ? error.response.data : error.message);
@@ -201,6 +200,11 @@ function SignUpForm() {
           </Form>
         </Col>
       </Row>
+      <AccountModal 
+          message={modalMessage}
+          modalVisible={true}
+          onClose={() => setModalVisible(false)}
+        />
     </Container>
   );
 }
