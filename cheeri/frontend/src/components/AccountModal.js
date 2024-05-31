@@ -23,7 +23,7 @@ function AccountModal({ visible, message, onClose }) {
       <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={handleClose}>
-          <Link to="/Home" style={{ color: '#fff', textDecoration: 'none' }}>
+          <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>
             Let's Go
           </Link>
         </Button>

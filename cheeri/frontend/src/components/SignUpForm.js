@@ -98,9 +98,9 @@ function SignUpForm() {
           <h2 className="sign-up-title">Sign Up</h2>
           <Form
             className="main-form-sign"
-            onSubmit={handleSubmit}
             noValidate
             validated={validated}
+            onSubmit={handleSubmit}
           >
             <Form.Group className="mb-3 form-input" controlId="formGroupText">
               <Form.Label>Full Name</Form.Label>
@@ -201,8 +201,8 @@ function SignUpForm() {
         </Col>
       </Row>
       <AccountModal 
+          visible={modalMessage}
           message={modalMessage}
-          modalVisible={true}
           onClose={() => setModalVisible(false)}
         />
     </Container>
