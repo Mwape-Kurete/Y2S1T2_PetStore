@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,22 +6,40 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
+import axios from 'axios';
 import { UserContext } from "../UserContext";  // Correct import statement
 
-function CommentSection() {
+function CommentSection({ productId }) {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
-
   const { user } = useContext(UserContext);  // Access user from UserContext
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/comments/${productId}`);
+        setComments(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    };
+
+    fetchComments();
+  }, [productId]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (rating && comment) {
-      const newComment = { rating, comment, id: comments.length + 1, userName: user.name };
-      setComments([...comments, newComment]);
-      setRating("");
-      setComment("");
+      const newComment = { productId, userName: user.name, rating, comment };
+      try {
+        const response = await axios.post('http://localhost:5000/api/comments', newComment);
+        setComments([...comments, response.data]);
+        setRating("");
+        setComment("");
+      } catch (error) {
+        console.error('Error posting comment:', error);
+      }
     }
   };
 
@@ -68,7 +86,7 @@ function CommentSection() {
           <h2>Reviews</h2>
           <ListGroup>
             {comments.map((review) => (
-              <ListGroup.Item key={review.id}>
+              <ListGroup.Item key={review._id}>
                 <strong>Rating: </strong> {review.rating}
                 <br />
                 <strong>Comment: </strong> {review.comment}

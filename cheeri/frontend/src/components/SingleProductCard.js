@@ -66,7 +66,7 @@ function SingleProductCard() {
       </Row>
       {/* Review Section Below */}
       <Row className="review-section">
-        <CommentSection />
+        <CommentSection productId={id} />
       </Row>
     </Container>
   );

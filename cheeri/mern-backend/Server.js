@@ -33,6 +33,10 @@ app.use('/api/users', userRoutes);
 const productRoutes = require('./routes/ProductRoutes');
 app.use('/api/products', productRoutes);
 
+// Comment routes
+const commentsRoutes = require('./routes/CommentsRoutes');
+app.use('/api', commentsRoutes);
+
 const start = async () => {
   try {
     await mongoose.connect(MONGO_URI);
