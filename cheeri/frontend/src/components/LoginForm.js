@@ -77,7 +77,13 @@ function LoginForm() {
         console.log("Response from server:", response.data);
 
         setUser(response.data);
-        navigate('/');
+
+        // Redirect based on user role
+        if (response.data.isAdmin) {
+          navigate('/AdminUpload');
+        } else {
+          navigate('/');
+        }
 
       } catch (error) {
         console.error('Error logging in user', error.response ? error.response.data : error.message);

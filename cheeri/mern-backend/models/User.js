@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    isAdmin: {
+        type: Boolean,
+        default: false, // Set to false automatically for regular users and  manually for admin users
+    },
 });
 
 module.exports = mongoose.model('User', UserSchema);

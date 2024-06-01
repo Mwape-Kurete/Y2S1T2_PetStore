@@ -47,26 +47,24 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        let currentUser = await User.findOne({ email });
+        let user = await User.findOne({ email });
 
-        if (!currentUser) {
+        if (!user) {
             return res.status(400).json({ error: "User does not exist" });
         }
 
-        const isMatch = await bcrypt.compare(password, currentUser.password);
+        const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
             return res.status(400).json({ error: "Incorrect password" });
         }
 
-        // Remove password field before sending the user object
-        //renaming the password field to avoid an internal server error 
-        const { password: userPassword, ...userWithoutPassword } = currentUser.toObject();
+        // Remove password field before sending the user object and renaming the password field to avoid errors
+        const { password: userPassword, ...userWithoutPassword } = user.toObject();
         res.status(200).json(userWithoutPassword);
     } catch (err) {
         console.error('Error logging in user:', err);
         res.status(500).json({ error: "Server error" });
     }
 });
-
 module.exports = router;

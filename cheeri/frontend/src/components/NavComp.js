@@ -38,11 +38,20 @@ function NavComp() {
           </Nav.Link>
 
           {user ? (
-            <Nav.Link className="right-of nav-text">
-              <Link to="/Profile" className="hyperlink">
-                Profile <i className="bi bi-person-fill"></i>
-              </Link>
-            </Nav.Link>
+            <>
+              {user.isAdmin && (
+                <Nav.Link className="right-of nav-text">
+                  <Link to="/admin" className="hyperlink">
+                    Admin Portal <i className="bi bi-person-fill"></i>
+                  </Link>
+                </Nav.Link>
+              )}
+              <Nav.Link className="right-of nav-text">
+                <Link to="/Profile" className="hyperlink">
+                  Profile <i className="bi bi-person-fill"></i>
+                </Link>
+              </Nav.Link>
+            </>
           ) : (
             <Nav.Link className="right-of nav-text">
               <Link to="/LoginSignUp" className="hyperlink">
