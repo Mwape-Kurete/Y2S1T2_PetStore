@@ -1,3 +1,4 @@
+import React from 'react';
 import "../styles/ProductCards.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -6,20 +7,19 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
-import tempImg from "../media/romi.jpg";
-
-function ProductCards() {
+function ProductCards({ product }) {
   return (
     <Col className="product-cards">
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={tempImg} />
+        <Card.Img variant="top" src={product.image} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title className="prodName">{product.productName}</Card.Title>
           <Card.Text>
-            Category:
-            <p>R00-00</p>
+            <span className="category" id="category">{product.category}</span>
+            <span className="price" id="price">{`R${product.price}`}</span>
+            <span className="descript" id="description">{product.description}</span>
           </Card.Text>
-          <Button variant="primary">add to cart</Button>
+          <Button variant="primary">Add to Cart</Button>
           <Button variant="warning">
             <i className="bi bi-heart-fill"></i>
           </Button>

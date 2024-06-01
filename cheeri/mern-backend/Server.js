@@ -40,7 +40,9 @@ app.get("/", (req, res) => {
 const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 
-
+// product routes
+const productRoutes = require('./routes/ProductRoutes');
+app.use('/api/products', productRoutes);
 
 const start = async() => {
   

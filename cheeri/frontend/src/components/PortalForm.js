@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import axios from 'axios';
+
 function PortalForm() {
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
@@ -13,23 +15,34 @@ function PortalForm() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here, e.g., send data to the server
-    console.log({
-      productName,
-      category,
-      price,
-      description,
-      image,
-    });
-
-    // Clear the form
-    setProductName("");
-    setCategory("");
-    setPrice("");
-    setDescription("");
-    setImage(null);
+    
+    const formData = new FormData();
+    formData.append('productName', productName);
+    formData.append('category', category);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('image', image);
+    
+    try {
+      const response = await axios.post('http://localhost:5000/api/products/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('Product uploaded successfully:', response.data);
+  
+      // Clear the form
+      setProductName("");
+      setCategory("");
+      setPrice("");
+      setDescription("");
+      setImage(null);
+      
+    } catch (error) {
+      console.error('Error uploading product:', error);
+    }
   };
 
   return (
