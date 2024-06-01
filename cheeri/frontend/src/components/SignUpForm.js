@@ -59,6 +59,8 @@ function SignUpForm() {
 
       } catch (error) {
         console.error('Error adding user', error.response ? error.response.data : error.message);
+
+        setModalVisible(false); 
       }
     }
 
@@ -66,6 +68,7 @@ function SignUpForm() {
   };
 
   const handlePasswordChange = (password) => {
+
     setPassword(password);
     const letterMatch = (password.match(/[a-zA-Z]/g) || []).length;
     const numberMatch = (password.match(/[0-9]/g) || []).length;
@@ -201,7 +204,7 @@ function SignUpForm() {
         </Col>
       </Row>
       <AccountModal 
-          visible={modalMessage}
+          visible={modalVisible}
           message={modalMessage}
           onClose={() => setModalVisible(false)}
         />
