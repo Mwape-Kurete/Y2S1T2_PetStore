@@ -1,0 +1,17 @@
+.signOut {
+  width: 250px;
+
+  background-color: #feb737;
+  border: #feb737;
+}
+
+.signOut-link {
+  text-decoration: none;
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #172121;
+  letter-spacing: 0;
+  line-height: normal;
+}

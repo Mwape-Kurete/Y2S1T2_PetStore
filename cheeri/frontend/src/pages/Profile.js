@@ -12,15 +12,15 @@ import "../styles/Profile.css";
 
 import NavComp from "../components/NavComp";
 import SingleProductCard from "../components/SingleProductCard";
-import { UserContext } from "../UserContext";  // Correctly import UserContext
+import { UserContext } from "../UserContext"; // Correctly import UserContext
 
 function Profile() {
-  const { setUser } = useContext(UserContext);  // Access setUser from UserContext
+  const { setUser } = useContext(UserContext); // Access setUser from UserContext
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    setUser(null);  // Clear the user state
-    navigate("/LoginSignUp");  // Redirect to LoginSignUp page
+    setUser(null); // Clear the user state
+    navigate("/LoginSignUp"); // Redirect to LoginSignUp page
   };
 
   return (
@@ -30,14 +30,13 @@ function Profile() {
       </Row>
       <Row className="page-cont">
         <h2>Your Profile</h2>
-        <Col className="wishlist-Prod-cont col-12">
-          <p>wishlist items</p>
+        <Col className="wishlist-Prod-cont col-12 d-flex justify-content-center">
+          <Button onClick={handleSignOut} className="signOut">
+            <Link to="/LoginSignUp" className="signOut-link">
+              Sign Out Of Account
+            </Link>
+          </Button>
         </Col>
-        <Button variant="light" onClick={handleSignOut}>
-          <Link to="/LoginSignUp">
-            Sign Out Of Account
-          </Link>
-        </Button>
       </Row>
     </Container>
   );
