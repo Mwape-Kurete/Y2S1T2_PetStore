@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+
 import AccountModal from "./AccountModal";
+import { UserContext } from '../UserContext';
 
 import axios from 'axios'; 
 
@@ -17,7 +22,10 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [modalMessage, setModalMessage] = useState("");
-  const [modalVisible, setModalVisible] = useState(false); 
+  const [modalVisible, setModalVisible] = useState(false);
+  
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const validateForm = () => {
     let formErrors = {};
@@ -67,6 +75,9 @@ function LoginForm() {
         setModalVisible(true);
 
         console.log("Response from server:", response.data);
+
+        setUser(response.data);
+        navigate('/');
 
       } catch (error) {
         console.error('Error logging in user', error.response ? error.response.data : error.message);

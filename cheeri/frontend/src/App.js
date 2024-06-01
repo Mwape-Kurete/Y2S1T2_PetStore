@@ -6,7 +6,7 @@ import Cart from "./pages/Cart";
 import LoginSignUp from "./pages/LoginSignUp";
 import SingleProduct from "./pages/SingleProduct";
 import AdminUpload from "./pages/AdminUpload";
-// import { UserProvider } from './UserContext';
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <Route path="LoginSignUp" element={<LoginSignUp />} />
           <Route path="SingleProduct" element={<SingleProduct />} />
           <Route path="AdminUpload" element={<AdminUpload />} />
+          <Route path="Profile" element={<Profile />} />
         </Routes>
     </Router>
   );

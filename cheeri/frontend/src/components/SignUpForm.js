@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import { useRef, useState } from "react";
+import React, {  useContext, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,6 +11,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+
+import { UserContext } from "../UserContext";
 import AccountModal from "./AccountModal";
 
 import axios from 'axios'; 
@@ -28,6 +31,9 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +62,9 @@ function SignUpForm() {
         setModalVisible(true);
 
         console.log("Response from server:", response.data);
+
+        setUser(response.data);
+        navigate('/');
 
       } catch (error) {
         console.error('Error adding user', error.response ? error.response.data : error.message);
