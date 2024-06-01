@@ -13,6 +13,7 @@ function CommentSection({ productId }) {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [editingCommentId, setEditingCommentId] = useState(null);
   const { user } = useContext(UserContext);  // Access user from UserContext
 
   useEffect(() => {
@@ -33,13 +34,34 @@ function CommentSection({ productId }) {
     if (rating && comment) {
       const newComment = { productId, userName: user.name, rating, comment };
       try {
-        const response = await axios.post('http://localhost:5000/api/comments', newComment);
-        setComments([...comments, response.data]);
+        if (editingCommentId) {
+          const response = await axios.put(`http://localhost:5000/api/comments/${editingCommentId}`, newComment);
+          setComments(comments.map(c => c._id === editingCommentId ? response.data : c));
+          setEditingCommentId(null);
+        } else {
+          const response = await axios.post('http://localhost:5000/api/comments', newComment);
+          setComments([...comments, response.data]);
+        }
         setRating("");
         setComment("");
       } catch (error) {
         console.error('Error posting comment:', error);
       }
+    }
+  };
+
+  const handleEdit = (comment) => {
+    setRating(comment.rating);
+    setComment(comment.comment);
+    setEditingCommentId(comment._id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/comments/${id}`);
+      setComments(comments.filter(c => c._id !== id));
+    } catch (error) {
+      console.error('Error deleting comment:', error);
     }
   };
 
@@ -76,7 +98,7 @@ function CommentSection({ productId }) {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit Review
+              {editingCommentId ? "Update Review" : "Submit Review"}
             </Button>
           </Form>
         </Col>
@@ -92,6 +114,12 @@ function CommentSection({ productId }) {
                 <strong>Comment: </strong> {review.comment}
                 <br />
                 <span className="user-handle">@{review.userName}</span>
+                {review.userName === user.name && (
+                  <>
+                    <Button variant="secondary" onClick={() => handleEdit(review)}>Edit</Button>
+                    <Button variant="danger" onClick={() => handleDelete(review._id)}>Delete</Button>
+                  </>
+                )}
               </ListGroup.Item>
             ))}
           </ListGroup>

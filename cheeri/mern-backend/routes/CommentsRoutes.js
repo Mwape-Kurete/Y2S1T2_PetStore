@@ -24,4 +24,29 @@ router.post('/comments', async (req, res) => {
   }
 });
 
+// Update a comment
+router.put('/comments/:id', async (req, res) => {
+  const { rating, comment } = req.body;
+  try {
+    const updatedComment = await Comment.findByIdAndUpdate(
+      req.params.id,
+      { rating, comment },
+      { new: true }
+    );
+    res.status(200).json(updatedComment);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update comment' });
+  }
+});
+
+// Delete a comment
+router.delete('/comments/:id', async (req, res) => {
+  try {
+    await Comment.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: 'Comment deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete comment' });
+  }
+});
+
 module.exports = router;
