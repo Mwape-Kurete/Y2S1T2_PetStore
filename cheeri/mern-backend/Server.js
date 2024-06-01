@@ -1,17 +1,12 @@
-// const dotenv = require("dotenv");
 const express = require('express');
 const mongoose = require('mongoose');
-mongoose.set('strictQuery', false); //additional setting 
-
-const User = require('./models/User'); 
-
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); //additional setting
 const cors = require('cors');
+const path = require('path');
 
-// Load environment variables from .env file
-// dotenv.config();
+mongoose.set('strictQuery', false);
 
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
@@ -23,49 +18,32 @@ const MONGO_URI = process.env.MONGO_URI;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
-
-const user = new User({
-  name: 'mwaps', 
-  email: 'mwapsisworking@gmail.com',
-  password: '!mwaps_IS_workingX@m9!'
-});
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Simple route for testing
 app.get("/", (req, res) => {
-  res.send(user);
+  res.send('API is running...');
 });
-
 
 // User routes
 const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 
-// product routes
+// Product routes
 const productRoutes = require('./routes/ProductRoutes');
 app.use('/api/products', productRoutes);
 
-const start = async() => {
-  
-try{
-  await mongoose.connect(MONGO_URI); 
+const start = async () => {
+  try {
+    await mongoose.connect(MONGO_URI);
 
-  // Launch server
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-
-}catch(e){
-  console.log(e.message);
-}
-  
-
+    // Launch server
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (e) {
+    console.log(e.message);
+  }
 }
 
-start(); 
-
-
-//the following goes in the connect 
-// , {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// }
+start();

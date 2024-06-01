@@ -22,6 +22,8 @@ function Products() {
       try {
         const response = await axios.get('http://localhost:5000/api/products');
         setProducts(response.data);
+
+        console.log(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -43,7 +45,7 @@ function Products() {
         <Col className="filter">
           <FilterSortBar />
         </Col>
-        <Row className="prods">
+        <Row className="prods ">
           {products.map(product => (
             <ProductCards key={product._id} product={product} />
           ))}

@@ -6,7 +6,7 @@ const multer = require('multer');
 // Configure multer for file upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Sending uploads to a file in the backend directory
+    cb(null, 'uploads/'); // Sending uploads to a file in backend directory
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -16,10 +16,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }); // Initializing multer
 
-// Route to upload a product
 router.post('/upload', upload.single('image'), async (req, res) => {
   const { productName, category, price, description } = req.body;
-  const image = req.file ? req.file.path : null;
+  const image = req.file ? req.file.path.replace(/\\/g, '/') : null;
 
   try {
     const newProduct = new Product({
@@ -62,5 +61,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch product' });
   }
 });
+
 
 module.exports = router;

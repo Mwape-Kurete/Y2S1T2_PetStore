@@ -16,7 +16,8 @@ function App() {
           <Route path="Products" element={<Products />} />
           <Route path="Cart" element={<Cart />} />
           <Route path="LoginSignUp" element={<LoginSignUp />} />
-          <Route path="SingleProduct" element={<SingleProduct />} />
+          <Route path="Products" element={<Products />}/>
+          <Route path="SingleProduct/:id" element={<SingleProduct />} />
           <Route path="AdminUpload" element={<AdminUpload />} />
           <Route path="Profile" element={<Profile />} />
         </Routes>
