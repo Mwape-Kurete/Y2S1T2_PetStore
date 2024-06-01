@@ -6,20 +6,19 @@ import Cart from "./pages/Cart";
 import LoginSignUp from "./pages/LoginSignUp";
 import SingleProduct from "./pages/SingleProduct";
 import AdminUpload from "./pages/AdminUpload";
-import NavComp from "./components/NavComp";
+// import { UserProvider } from './UserContext';
 
 function App() {
   return (
     <Router>
-      {/* <NavComp /> */}
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="Products" element={<Products />} />
-        <Route path="Cart" element={<Cart />} />
-        <Route path="LoginSignUp" element={<LoginSignUp />} />
-        <Route path="SingleProduct" element={<SingleProduct />} />
-        <Route path="AdminUpload" element={<AdminUpload />} />
-      </Routes>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="Products" element={<Products />} />
+          <Route path="Cart" element={<Cart />} />
+          <Route path="LoginSignUp" element={<LoginSignUp />} />
+          <Route path="SingleProduct" element={<SingleProduct />} />
+          <Route path="AdminUpload" element={<AdminUpload />} />
+        </Routes>
     </Router>
   );
 }
